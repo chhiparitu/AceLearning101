@@ -19,8 +19,13 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Map;
 
 public class signup extends AppCompatActivity {
 
@@ -118,13 +123,39 @@ public class signup extends AppCompatActivity {
                                 FirebaseUser user = auth.getCurrentUser();
                                 userID = user.getUid();
 
-                                UserInformation userInformation = new UserInformation(name ,email, password, usertype);
+                                UserInformation userInformation = new UserInformation(name ,email, usertype);
                                 myRef.child("users").child(userID).setValue(userInformation);
 
+                                myRef.child("users").child(userID).addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        String value=dataSnapshot.getValue().toString();
+                                        Map<String,String> usertype=(Map) dataSnapshot.getValue();
+                                        String usert=usertype.get("usertype");
+                                        //Toast.makeText(CheckUsertype.this, usert, Toast.LENGTH_SHORT).show();
+                                        if(usert.equals("student"))
+                                        {
+                                            Intent i=new Intent(signup.this,login.class);
+                                            startActivity(i);
+                                            finish();
+                                        }
+                                        else if(usert.equals("faculty"))
+                                        {
+                                            Intent i=new Intent(signup.this,checksubject.class);
+                                            startActivity(i);
+                                            finish();
+                                        }
 
-                                Intent i=new Intent(signup.this,login.class);
-                                startActivity(i);
-                                finish();
+
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                                        //Toast.makeText(CheckUsertype.this,"error found",Toast.LENGTH_LONG).show();
+
+                                    }
+                                });
+
                             }
                         }
                     });

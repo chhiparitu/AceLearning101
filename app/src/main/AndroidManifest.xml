@@ -14,7 +14,28 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        
+        <activity
+            android:name="com.example.dell.AceLearning.uploadques"
+            android:label="@string/title_activity_uploadques"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name="com.example.dell.AceLearning.livelecture"
+            android:label="@string/title_activity_livelecture"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.dell.AceLearning.logout"
+            android:label="@string/title_activity_logout"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.dell.AceLearning.changepassword"
+            android:label="@string/title_activity_changepassword"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.dell.AceLearning.home_fac"
+            android:label="@string/title_activity_home_fac"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name="com.example.dell.AceLearning.checksubject" />
+        <activity android:name="com.example.dell.AceLearning.CheckUsertype" />
         <activity android:name="com.example.dell.AceLearning.MainActivity" />
         <activity android:name="com.example.dell.AceLearning.welcome">
             <intent-filter>

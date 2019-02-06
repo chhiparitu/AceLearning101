@@ -6,17 +6,17 @@ public class UserInformation  {
     private String name;
     private String email;
     private String usertype;
-    private String password;
+  //  private String password;
 
     public UserInformation(){
 
     }
 
-    public UserInformation(String name,String email, String password, String usertype) {
+    public UserInformation(String name,String email, String usertype) {
         this.email = email;
         this.name = name;
         this.usertype = usertype;
-        this.password=password;
+        //this.password=password;
     }
 
     public String getEmail() {
@@ -43,13 +43,13 @@ public class UserInformation  {
         this.usertype= usertype;
     }
 
-    public void setPassword(String password)
-    {
+    //public void setPassword(String password)
+    /*{
         this.password=password;
     }
     public String getPassword()
     {
         return password;
-    }
+    }*/
 
 }
